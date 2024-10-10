@@ -10,7 +10,8 @@ def process_pendulum_data(file_path, output_path_max_min):
     times = df['t (seconds)']
 
     # Identify local maxima
-    local_maxima_indices = (np.diff(np.sign(np.diff(angles))) < 0).nonzero()[0] + 1
+    local_maxima_indices = (np.diff(np.sign(np.diff(angles))) < 0).nonzero()[0]+1
+    print(local_maxima_indices)
     local_maxima_angles = angles.iloc[local_maxima_indices]
     local_maxima_times = times.iloc[local_maxima_indices]
 
