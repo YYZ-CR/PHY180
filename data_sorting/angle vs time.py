@@ -53,15 +53,16 @@ def process_pendulum_data(file_path, output_path_max_min):
 
     # Create dataframes for both maxima and minima
     output_data_max = pd.DataFrame({'Time (seconds)': sorted_times_max, 'Amplitude (radians)': sorted_maxima, 'Time uncertainty (seconds)': 0.008, 'Amplitude uncertainty (radians)': 0.02})
-    output_data_min = pd.DataFrame({'Time (seconds)': sorted_times_min, 'Amplitude (radians)': sorted_minima, 'Time uncertainty (seconds)': 0.008, 'Amplitude uncertainty (radians)': 0.02})
+    output_data_min = pd.DataFrame({'Time (seconds)': sorted_times_min, 'Amplitude (radians)': np.abs(sorted_minima), 'Time uncertainty (seconds)': 0.008, 'Amplitude uncertainty (radians)': 0.02})
 
     # Combine maxima and minima into one dataframe
     combined_output_data = pd.concat([output_data_max, output_data_min])
 
     # Save the combined output to a txt file
-    combined_output_data.to_csv(output_path_max_min, sep='\t', index=False)
+    #combined_output_data.to_csv(output_path_max_min, sep='\t', index=False)
+    output_data_max.to_csv(output_path_max_min, sep='\t', index=False)
     return output_path_max_min
 
-file_path = 'data_sorting/pendulum_data_from_tracker.txt'
+file_path = 'data_sorting/pendulum_data_from_tracker_copy.txt'
 output_path_max_min = 'data_sorting/sorted_angle_vs_time.txt'
 process_pendulum_data(file_path, output_path_max_min)

@@ -62,6 +62,6 @@ def process_pendulum_data(file_path, output_path_max_min):
     combined_output_data.to_csv(output_path_max_min, sep='\t', index=False)
     return output_path_max_min
 
-file_path = 'data_sorting/pendulum_data_from_tracker.txt'
+file_path = 'data_sorting/pendulum_data_from_tracker_copy.txt'
 output_path_max_min = 'data_sorting/sorted_angle_vs_period.txt'
 process_pendulum_data(file_path, output_path_max_min)
