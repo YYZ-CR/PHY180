@@ -18,7 +18,7 @@ def process_pendulum_data(file_path, output_path_max_min):
     periods_max = np.diff(local_maxima_times)
 
     # Filter periods that are between 1 and 2 seconds, and keep the times and angles of valid maxima
-    valid_indices_max = np.where((periods_max >= 1) & (periods_max <= 2))[0]
+    valid_indices_max = np.where((periods_max >= 1) & (periods_max <= 1.5))[0]
     valid_maxima = local_maxima_angles.iloc[valid_indices_max]
     valid_times_max = local_maxima_times.iloc[valid_indices_max]
 
@@ -36,7 +36,7 @@ def process_pendulum_data(file_path, output_path_max_min):
     periods_min = np.diff(local_minima_times)
 
     # Filter periods that are between 1 and 2 seconds, and keep the times and angles of valid minima
-    valid_indices_min = np.where((periods_min >= 1) & (periods_min <= 1.5))[0]
+    valid_indices_min = np.where((periods_min >= 1) & (periods_min <= 2))[0]
     valid_minima = local_minima_angles.iloc[valid_indices_min]
     valid_times_min = local_minima_times.iloc[valid_indices_min]
 
@@ -52,15 +52,15 @@ def process_pendulum_data(file_path, output_path_max_min):
     sorted_times_min = sorted_times_min.round(3)
 
     # Create dataframes for both maxima and minima
-    output_data_max = pd.DataFrame({'Time (seconds)': sorted_times_max, 'Amplitude (radians)': sorted_maxima, 'Time uncertainty (seconds)': 0.002, 'Amplitude uncertainty (radians)': 0.002})
-    output_data_min = pd.DataFrame({'Time (seconds)': sorted_times_min, 'Amplitude (radians)': np.abs(sorted_minima), 'Time uncertainty (seconds)': 0.002, 'Amplitude uncertainty (radians)': 0.002})
+    output_data_max = pd.DataFrame({'Time (seconds)': sorted_times_max, 'Amplitude (radians)': sorted_maxima, 'Time uncertainty (seconds)': 0.008, 'Amplitude uncertainty (radians)': 0.002})
+    output_data_min = pd.DataFrame({'Time (seconds)': sorted_times_min, 'Amplitude (radians)': np.abs(sorted_minima), 'Time uncertainty (seconds)': 0.008, 'Amplitude uncertainty (radians)': 0.002})
 
     # Combine maxima and minima into one dataframe
     combined_output_data = pd.concat([output_data_max, output_data_min])
 
     # Save the combined output to a txt file
-    combined_output_data.to_csv(output_path_max_min, sep='\t', index=False)
-    #output_data_max.to_csv(output_path_max_min, sep='\t', index=False)
+    #combined_output_data.to_csv(output_path_max_min, sep='\t', index=False)
+    output_data_max.to_csv(output_path_max_min, sep='\t', index=False)
     return output_path_max_min
 
 file_path = 'data_sorting/pendulum_data_from_tracker_copy.txt'

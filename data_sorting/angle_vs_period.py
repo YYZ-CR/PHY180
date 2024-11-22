@@ -37,7 +37,7 @@ def process_pendulum_data(file_path, output_path_max_min):
     periods_min = np.diff(local_minima_times)
 
     # Filter periods that are between 1 and 2 seconds
-    valid_indices_min = np.where((periods_min >= 1) & (periods_min <= 2))[0]
+    valid_indices_min = np.where((periods_min >= 1) & (periods_min <= 1.5))[0]
     valid_minima = local_minima_angles.iloc[valid_indices_min]
     valid_periods_min = periods_min[valid_indices_min]
 
@@ -53,8 +53,8 @@ def process_pendulum_data(file_path, output_path_max_min):
     sorted_periods_min = sorted_periods_min.round(3)
 
     # Create dataframes for both maxima and minima
-    output_data_max = pd.DataFrame({'Amplitude (radians)': sorted_maxima, 'Period (seconds)': sorted_periods_max, 'Amplitude uncertainty (radians)': 0.002, 'Period uncertainty (seconds)': 0.002})
-    output_data_min = pd.DataFrame({'Amplitude (radians)': sorted_minima, 'Period (seconds)': sorted_periods_min, 'Amplitude uncertainty (radians)': 0.002, 'Period uncertainty (seconds)': 0.002})
+    output_data_max = pd.DataFrame({'Amplitude (radians)': sorted_maxima, 'Period (seconds)': sorted_periods_max, 'Amplitude uncertainty (radians)': 0.002, 'Period uncertainty (seconds)': 0.008})
+    output_data_min = pd.DataFrame({'Amplitude (radians)': sorted_minima, 'Period (seconds)': sorted_periods_min, 'Amplitude uncertainty (radians)': 0.002, 'Period uncertainty (seconds)': 0.008})
 
     # Combine maxima and minima into one dataframe
     combined_output_data = pd.concat([output_data_max, output_data_min])

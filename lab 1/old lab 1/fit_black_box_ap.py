@@ -14,8 +14,6 @@ Do NOT put commas in your data file!! You can use tabs instead of spaces.
 The data file should be in the same directory as this python file.
 The data should be in the order:
 x_data y_data x_uncertainty y_uncertainty
-
-Modified from fit_black_box.py written by Dr. Brian Wilson, University of Toronto.
 """
 
 
@@ -31,7 +29,7 @@ def load_data(filename):
 
 def plot_fit(my_func, xdata, ydata, xerror=None, yerror=None, init_guess=None, font_size=14,
              xlabel="Angle (rad)", ylabel="Period (s)", 
-             title="Pendulum Drop Angle [s] vs. Oscillation Period [s] at 297mm"):
+             title="Pendulum Drop Angle [s] vs. Oscillation Period [s]"):
     plt.rcParams.update({'font.size': font_size})
     plt.rcParams['figure.figsize'] = 10, 9
     # Change the fontsize of the graphs to make it easier to read.
