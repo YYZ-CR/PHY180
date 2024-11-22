@@ -19,7 +19,7 @@ def process_pendulum_data(file_path, output_path_max_min):
     periods_max = np.diff(local_maxima_times)
 
     # Filter periods that are between 1 and 2 seconds
-    valid_indices_max = np.where((periods_max >= 1) & (periods_max <= 2))[0]
+    valid_indices_max = np.where((periods_max >= 0.8) & (periods_max <= 1.5))[0]
     valid_maxima = local_maxima_angles.iloc[valid_indices_max]
     valid_periods_max = periods_max[valid_indices_max]
 
@@ -37,7 +37,7 @@ def process_pendulum_data(file_path, output_path_max_min):
     periods_min = np.diff(local_minima_times)
 
     # Filter periods that are between 1 and 2 seconds
-    valid_indices_min = np.where((periods_min >= 1) & (periods_min <= 1.5))[0]
+    valid_indices_min = np.where((periods_min >= 0.8) & (periods_min <= 1.5))[0]
     valid_minima = local_minima_angles.iloc[valid_indices_min]
     valid_periods_min = periods_min[valid_indices_min]
 

@@ -31,7 +31,7 @@ def load_data(filename):
 
 def plot_fit(my_func, xdata, ydata, xerror=None, yerror=None, init_guess=None, font_size=14,
              xlabel="Angle (rad)", ylabel="Period (s)", 
-             title="Pendulum Drop Angle [s] vs. Oscillation Period [s] at 262mm"):
+             title="Pendulum Drop Angle [s] vs. Oscillation Period [s] at 212mm"):
     plt.rcParams.update({'font.size': font_size})
     plt.rcParams['figure.figsize'] = 10, 9
     # Change the fontsize of the graphs to make it easier to read.
