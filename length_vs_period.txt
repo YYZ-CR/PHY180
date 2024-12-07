@@ -1,0 +1,9 @@
+Length (mm)	length uncertainty (mm)	period (s) - calculated by taking all the values for each measurement -0.319< θ <0.319 and averaging them	period uncertainty (s)
+0.297	0.0005	1.141	0.002
+0.287	0.0005	1.120	0.002
+0.273	0.0005	1.100	0.002
+0.262	0.0005	1.075	0.002
+0.251	0.0005	1.016	0.002
+0.236	0.0005	1.000	0.002
+0.226	0.0005	0.964	0.002
+0.212	0.0005	0.940	0.002
